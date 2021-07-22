@@ -1,4 +1,6 @@
 {
+    "name": "netbull-foundation-emails-bundle",
+    "version": "1.0.0",
     "devDependencies": {
         "@symfony/webpack-encore": "^1.0.0",
         "core-js": "^3.0.0",
