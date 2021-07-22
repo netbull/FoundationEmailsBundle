@@ -1,0 +1,53 @@
+{% set locale = locale|default('en') %}
+
+{% apply inky_to_html|inline_css(css_source()) %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ locale }}" xml:lang="{{ locale }}">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>{% block title %}Emails{% endblock %}</title>
+    </head>
+    <body>
+    <table class="body">
+        <tr>
+            <td class="float-center" align="center" valign="top">
+                <spacer size="2" class="top-line"></spacer>
+                <center>
+                    <spacer size="16"></spacer>
+
+                    <container class="header">
+                        <spacer size="16"></spacer>
+                        {% block header %}{% endblock %}
+                        <spacer size="20"></spacer>
+                    </container>
+
+                    <container class="content">
+                        <row>
+                            <columns small="12" large="12">
+                                <spacer size="16"></spacer>
+                                {% block body %}{% endblock %}
+                                <spacer size="16"></spacer>
+                            </columns>
+                        </row>
+                    </container>
+
+                    <container class="footer">
+                        <row>
+                            <columns>
+                                <spacer size="24"></spacer>
+                                {% block footer %}{% endblock %}
+                                <spacer size="24"></spacer>
+                            </columns>
+                        </row>
+                    </container>
+                    <spacer size="32"></spacer>
+                </center>
+            </td>
+        </tr>
+    </table>
+    </body>
+</html>
+{% endapply %}

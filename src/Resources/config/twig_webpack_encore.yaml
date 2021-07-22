@@ -1,0 +1,7 @@
+services:
+    netbull_foundation_emails.email_extension:
+        class: NetBull\FoundationEmailsBundle\Twig\EmailWebpackEncoreExtension
+        public: true
+        arguments: [ '@parameter_bag', '@webpack_encore.entrypoint_lookup[_default]' ]
+        tags:
+            - { name: twig.extension }

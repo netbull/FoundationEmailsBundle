@@ -1,0 +1,51 @@
+@import "../settings";
+
+.top-line {
+	width: 100%;
+	background-color: $primary-color;
+}
+
+table {
+	&.container.header, &.container.footer {
+		background: $white;
+	}
+
+	&.container.content {
+		border-radius: 10px;
+		text-align: justify;
+	}
+
+	&.container.footer {
+		text-align: center;
+
+		a, p {
+			font-size: 12px;
+		}
+
+		p {
+			text-align: center;
+		}
+
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			vertical-align: middle;
+
+			li {
+				display: inline;
+				padding: 0 5px;
+				border-right: 1px solid $dark-gray;
+				border-left: 1px solid $dark-gray;
+
+				&:first-child {
+					border-left: none;
+				}
+
+				&:last-child {
+					border-right: none;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,33 @@
+{
+    "name": "netbull/foundation-emails-bundle",
+    "description": "Foundation Emails bundle",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Aleksandar Dimitrov",
+            "email": "netbull2007@gmail.com"
+        }
+    ],
+    "keywords": [
+        "netbull foundation emails symfony bundle"
+    ],
+    "license": "AGPL-3.0-or-later",
+    "require": {
+        "php": "^7.4",
+        "ext-dom": "*",
+        "ext-xsl": "*",
+        "symfony/console": "5.2.*",
+        "symfony/mailer": "5.2.*",
+        "twig/cssinliner-extra": "^3.3",
+        "twig/extra-bundle": "^3.3",
+        "twig/inky-extra": "^3.3",
+    },
+    "require-dev": {
+        "symfony/webpack-encore-bundle": "^1.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "NetBull\\FoundationEmailsBundle\\": "src/"
+        }
+    }
+}

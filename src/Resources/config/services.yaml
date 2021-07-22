@@ -1,0 +1,8 @@
+services:
+    NetBull\FoundationEmailsBundle\Utils\SendMail:
+        public: true
+        arguments: [ '@mailer', '@parameter_bag' ]
+
+    NetBull\FoundationEmailsBundle\EventListener\MailSendListener:
+        arguments: [ '@NetBull\FoundationEmailsBundle\Utils\SendMail' ]
+        tags: [ 'kernel.event_listener' ]

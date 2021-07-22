@@ -1,0 +1,6 @@
+services:
+  netbull_foundation_emails.command.test:
+    class: NetBull\FoundationEmailsBundle\Command\TestEmailsCommand
+    arguments: [ '@parameter_bag', '@event_dispatcher' ]
+    tags:
+      - { name: console.command, command: 'netbull:emails:test' }

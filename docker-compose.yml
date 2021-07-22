@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+    front:
+        container_name: front
+        build:
+            context: .
+            dockerfile: ./docker/front/Dockerfile
+        volumes:
+            - ./:/app:cached
+        profiles:
+            - build
+    app:
+        container_name: app
+        build:
+            context: .
+            dockerfile: ./docker/app/Dockerfile
+        volumes:
+            - .:/app:cached

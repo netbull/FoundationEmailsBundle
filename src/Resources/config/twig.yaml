@@ -1,0 +1,7 @@
+services:
+    netbull_foundation_emails.email_extension:
+        class: NetBull\FoundationEmailsBundle\Twig\EmailExtension
+        public: true
+        arguments: [ '@parameter_bag' ]
+        tags:
+            - { name: twig.extension }
