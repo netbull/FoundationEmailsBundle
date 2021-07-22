@@ -20,7 +20,7 @@ class EmailExtension extends AbstractExtension
     /**
      * @var string|null
      */
-	private string $customInkyPath;
+	private ?string $customInkyPath;
 
     /**
      * EmailExtension constructor.
