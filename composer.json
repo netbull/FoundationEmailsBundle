@@ -25,6 +25,9 @@
     "require-dev": {
         "symfony/webpack-encore-bundle": "^1.12"
     },
+    "suggest": {
+        "symfony/amazon-mailer": "If you want to use AWS SES"
+    },
     "autoload": {
         "psr-4": {
             "NetBull\\FoundationEmailsBundle\\": "src/"
