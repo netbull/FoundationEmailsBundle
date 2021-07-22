@@ -28,7 +28,7 @@ class NetBullFoundationEmailsExtension extends Extension
         $loader->load('services.yaml');
         $loader->load('console.yaml');
 
-        $bundles = $container->getParameter('bundles');
+        $bundles = $container->getParameter('kernel.bundles');
         if (isset($bundles['WebpackEncoreBundle'])) {
             $loader->load('twig_webpack_encore.yaml');
         } else {
