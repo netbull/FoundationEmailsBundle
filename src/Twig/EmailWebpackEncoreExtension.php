@@ -19,6 +19,11 @@ class EmailWebpackEncoreExtension extends EmailExtension implements ServiceSubsc
     private EntrypointLookupInterface $entrypointLookup;
 
     /**
+     * @var bool
+     */
+    private bool $isDev;
+
+    /**
      * @var string
      */
     private string $publicDir;
@@ -33,6 +38,7 @@ class EmailWebpackEncoreExtension extends EmailExtension implements ServiceSubsc
         parent::__construct($parameterBag);
 
         $this->entrypointLookup = $entrypointLookup;
+        $this->isDev = 'prod' !== $parameterBag->get('kernel.environment');
         $this->publicDir = $parameterBag->get('kernel.project_dir').'/public';
     }
 
@@ -52,7 +58,16 @@ class EmailWebpackEncoreExtension extends EmailExtension implements ServiceSubsc
      */
     public function getCssSource(string $file = null): string
     {
-        $context = null;
+        if ($this->isDev) {
+            $context = stream_context_create([
+                'http' => [
+                    'proxy' => 'tcp://docker.for.mac.localhost:8888', // 3112 - proxy port on host-mashine
+                    'request_fulluri' => true
+                ]
+            ]);
+        } else {
+            $context = null;
+        }
 
         $source = parent::getCssSource($file);
         if ($file) {
