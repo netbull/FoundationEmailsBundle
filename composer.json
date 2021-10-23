@@ -16,8 +16,8 @@
         "php": "^7.4",
         "ext-dom": "*",
         "ext-xsl": "*",
-        "symfony/console": "5.2.*",
-        "symfony/mailer": "5.2.*",
+        "symfony/console": "5.2.*|5.3.*",
+        "symfony/mailer": "5.2.*|5.3.*",
         "twig/cssinliner-extra": "^3.3",
         "twig/extra-bundle": "^3.3",
         "twig/inky-extra": "^3.3"
