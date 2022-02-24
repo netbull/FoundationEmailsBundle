@@ -7,10 +7,6 @@ use Symfony\Contracts\Service\ServiceSubscriberInterface;
 use Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface;
 use Twig\TwigFunction;
 
-/**
- * Class EmailWebpackEncoreExtension
- * @package NetBull\FoundationEmailsBundle\Twig
- */
 class EmailWebpackEncoreExtension extends EmailExtension implements ServiceSubscriberInterface
 {
     /**
@@ -29,7 +25,6 @@ class EmailWebpackEncoreExtension extends EmailExtension implements ServiceSubsc
     private string $publicDir;
 
     /**
-     * EmailExtensionWebpackEncore constructor.
      * @param EntrypointLookupInterface $entrypointLookup
      * @param ParameterBagInterface $parameterBag
      */
@@ -38,7 +33,7 @@ class EmailWebpackEncoreExtension extends EmailExtension implements ServiceSubsc
         parent::__construct($parameterBag);
 
         $this->entrypointLookup = $entrypointLookup;
-        $this->isDev = 'prod' !== $parameterBag->get('kernel.environment');
+        $this->isDev = 'dev' === $parameterBag->get('kernel.environment');
         $this->publicDir = $parameterBag->get('kernel.project_dir').'/public';
     }
 
