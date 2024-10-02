@@ -41,6 +41,14 @@ class SendMail
 		$this->parameterBag = $parameterBag;
 	}
 
+    /**
+     * @return Email|null
+     */
+    public function getRawMessage(): ?Email
+    {
+        return $this->message;
+    }
+
 	/**
 	 * @param string|null $template
 	 * @param array $parameters
@@ -107,6 +115,27 @@ class SendMail
 			}
 		} else {
 			$this->message->to(new Address($addresses, $name));
+		}
+
+		return $this;
+	}
+
+	/**
+	 * @param string[]|string|$addresses
+	 * @param string $name
+	 * @return $this
+	 */
+	public function setFrom($addresses, string $name = ''): SendMail
+	{
+		if (!$this->message) {
+			return $this;
+		}
+		if (is_array($addresses)) {
+			foreach ($addresses as $address) {
+				$this->message->from(new Address($address, $name));
+			}
+		} else {
+			$this->message->from(new Address($addresses, $name));
 		}
 
 		return $this;
