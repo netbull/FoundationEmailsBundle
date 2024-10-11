@@ -142,21 +142,25 @@ class SendMail
 	}
 
 	/**
-	 * @param array $attachment
+	 * @param resource|string|array $attachment
 	 * @return $this
 	 */
-	public function addAttachment(array $attachment): SendMail
+	public function addAttachment($attachment, string $name, string $contentType): SendMail
 	{
 		if (!$this->message || empty($attachment)) {
 			return $this;
 		}
 
-		list($path, $name, $mime) = $attachment;
-		$this->message->attachFromPath($path, $name, $mime);
+		if (is_array($attachment)) {
+			list($path, $name, $mime) = $attachment;
+			$this->message->attachFromPath($path, $name, $mime);
+		} else {
+			$this->message->attach($attachment, $name, $contentType);
+		}
 
 		return $this;
 	}
-
+	
 	/**
 	 * @param array $attachments
 	 * @return $this
