@@ -141,11 +141,13 @@ class SendMail
 		return $this;
 	}
 
-	/**
-	 * @param resource|string|array $attachment
-	 * @return $this
-	 */
-	public function addAttachment($attachment, string $name, string $contentType): SendMail
+    /**
+     * @param resource|string|array $attachment
+     * @param string|null $name
+     * @param string|null $contentType
+     * @return $this
+     */
+	public function addAttachment($attachment, ?string $name = null, ?string $contentType = null): SendMail
 	{
 		if (!$this->message || empty($attachment)) {
 			return $this;
@@ -160,9 +162,9 @@ class SendMail
 
 		return $this;
 	}
-	
+
 	/**
-	 * @param array $attachments
+	 * @param resource|string|array $attachments
 	 * @return $this
 	 */
 	public function setAttachments(array $attachments): SendMail
@@ -172,7 +174,7 @@ class SendMail
 		}
 
 		foreach ($attachments as $attachment) {
-			$this->message->attach($attachment);
+			$this->addAttachment($attachment);
 		}
 
 		return $this;
