@@ -23,6 +23,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('templates_path')->defaultValue('%kernel.project_dir%/templates/Emails')->end()
                 ->scalarNode('custom_inky_path')->defaultNull()->end()
+                ->scalarNode('rendered_templates_path')->defaultValue('%kernel.project_dir%/var/email_previews')->end()
             ->end();
 
         return $treeBuilder;
