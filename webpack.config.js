@@ -1,5 +1,4 @@
 const Encore = require('@symfony/webpack-encore');
-const { exec } = require('child_process');
 
 // Use legacy OpenSSL provider for Node.js 17+ compatibility
 process.env.NODE_OPTIONS = "--openssl-legacy-provider";
@@ -58,20 +57,6 @@ Encore
   .enableSassLoader((options) => {
     options.implementation = require('sass'); // Explicitly use Dart Sass
     options.sourceMap = !Encore.isProduction(); // Enable source maps only in development
-  })
-  .addPlugin({
-    apply: (compiler) => {
-      compiler.hooks.done.tap('RenderTemplatesPlugin', () => {
-        // Trigger the render command when SCSS or Inky files change
-        exec('php bin/console netbull:emails:render', (err, stdout, stderr) => {
-          if (err) {
-            console.error(`Error: ${stderr}`);
-            return;
-          }
-          console.log(`Templates re-rendered: ${stdout}`);
-        });
-      });
-    }
   });
 
 module.exports = Encore.getWebpackConfig();

@@ -87,14 +87,7 @@ class RenderEmailTemplatesCommand extends Command
         foreach ($this->templates as $template) {
             if (!$chosenTemplate || $chosenTemplate === $template) {
                 try {
-                    // Render the template with sample data -- to be replaced with dynamic data
-                    $html = $this->twig->render($template, [
-                        'email' => 'test@example.com',
-                        'name' => 'John Doe',
-                        'subject' => 'This is a test email',
-                        'exampleVar' => 'This is a test variable'
-                    ]);
-
+                    $html = $this->twig->render($template);
 
                     // Defines the output directory where rendered templates will be saved
                     $outputDir = $this->parameterBag->get('netbull_foundation_emails.rendered_templates_path');
