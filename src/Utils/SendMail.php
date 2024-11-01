@@ -9,10 +9,6 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 
-/**
- * Class SendMail
- * @package NetBull\FoundationEmailsBundle\Utils
- */
 class SendMail
 {
 	/**
@@ -30,11 +26,10 @@ class SendMail
 	 */
 	private ?Email $message;
 
-	/**
-	 * SendMail constructor.
-	 * @param MailerInterface $mailer
-	 * @param ParameterBagInterface $parameterBag
-	 */
+    /**
+     * @param MailerInterface $mailer
+     * @param ParameterBagInterface $parameterBag
+     */
 	public function __construct(MailerInterface $mailer, ParameterBagInterface $parameterBag)
 	{
 		$this->mailer = $mailer;
@@ -100,11 +95,11 @@ class SendMail
 	}
 
 	/**
-	 * @param string[]|string|$addresses
+	 * @param string|string[] $addresses
 	 * @param string $name
 	 * @return $this
 	 */
-	public function setTo($addresses, string $name = ''): SendMail
+	public function setTo(array|string $addresses, string $name = ''): SendMail
 	{
 		if (!$this->message) {
 			return $this;
@@ -121,11 +116,11 @@ class SendMail
 	}
 
 	/**
-	 * @param string[]|string|$addresses
+	 * @param string|string[] $addresses
 	 * @param string $name
 	 * @return $this
 	 */
-	public function setFrom($addresses, string $name = ''): SendMail
+	public function setFrom(array|string $addresses, string $name = ''): SendMail
 	{
 		if (!$this->message) {
 			return $this;
@@ -142,12 +137,12 @@ class SendMail
 	}
 
     /**
-     * @param resource|string|array $attachment
+     * @param array|string $attachment
      * @param string|null $name
      * @param string|null $contentType
      * @return $this
      */
-	public function addAttachment($attachment, ?string $name = null, ?string $contentType = null): SendMail
+	public function addAttachment(array|string $attachment, ?string $name = null, ?string $contentType = null): SendMail
 	{
 		if (!$this->message || empty($attachment)) {
 			return $this;
@@ -163,10 +158,10 @@ class SendMail
 		return $this;
 	}
 
-	/**
-	 * @param resource|string|array $attachments
-	 * @return $this
-	 */
+    /**
+     * @param array $attachments
+     * @return $this
+     */
 	public function setAttachments(array $attachments): SendMail
 	{
 		if (!$this->message || empty($attachments)) {

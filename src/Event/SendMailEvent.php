@@ -4,10 +4,6 @@ namespace NetBull\FoundationEmailsBundle\Event;
 
 use Symfony\Contracts\EventDispatcher\Event;
 
-/**
- * Class SendMailEvent
- * @package NetBull\FoundationEmailsBundle\Event
- */
 class SendMailEvent extends Event
 {
 	const TYPE_PUBLIC = 'public';
@@ -33,26 +29,25 @@ class SendMailEvent extends Event
 	 */
 	private string $subject;
 
-	/**
-	 * @var array|string
-	 */
-	private $addresses;
+    /**
+     * @var string|array|null
+     */
+	private string|array|null $addresses;
 
 	/**
 	 * @var array
 	 */
 	private array $attachments;
 
-	/**
-	 * SendMailEvent constructor.
-	 * @param string $template
-	 * @param array $params
-	 * @param string $subject
-	 * @param null $addresses
-	 * @param string|null $type
-	 * @param array $attachments
-	 */
-	public function __construct(string $template, array $params, string $subject, $addresses = null, string $type = null, array $attachments = [])
+    /**
+     * @param string $template
+     * @param array $params
+     * @param string $subject
+     * @param array|string|null $addresses
+     * @param string|null $type
+     * @param array $attachments
+     */
+	public function __construct(string $template, array $params, string $subject, array|string|null $addresses = null, string $type = null, array $attachments = [])
 	{
 		$this->template = $template;
 		$this->params = $params;
@@ -96,11 +91,11 @@ class SendMailEvent extends Event
 		return $this->subject;
 	}
 
-	/**
-	 * @return array|string
-	 */
-	public function getAddresses()
-	{
+    /**
+     * @return array|string|null
+     */
+	public function getAddresses(): array|string|null
+    {
 		return $this->addresses;
 	}
 

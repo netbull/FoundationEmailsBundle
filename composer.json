@@ -13,11 +13,12 @@
     ],
     "license": "AGPL-3.0-or-later",
     "require": {
-        "php": "^7.4 || ^8.0 || ^8.1 || ^8.2 || ^8.3",
+        "php": "8.*",
         "ext-dom": "*",
         "ext-xsl": "*",
-        "symfony/console": "5.2.*|5.3.*|5.4.*|6.3.*|6.4.*|7.0.*|7.1.*",
-        "symfony/mailer": "5.2.*|5.3.*|5.4.*|6.3.*|6.4.*|7.0.*|7.1.*",
+        "symfony/console": "6.4.*",
+        "symfony/mailer": "6.4.*",
+        "symfony/twig-bundle": "6.4.*",
         "twig/cssinliner-extra": "^3.3",
         "twig/extra-bundle": "^3.3",
         "twig/inky-extra": "^3.3"

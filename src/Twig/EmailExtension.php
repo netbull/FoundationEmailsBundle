@@ -11,10 +11,6 @@ use Twig\TwigFunction;
 use Pinky;
 use XSLTProcessor;
 
-/**
- * Class EmailExtension
- * @package NetBull\FoundationEmailsBundle\Twig
- */
 class EmailExtension extends AbstractExtension
 {
     /**
@@ -23,7 +19,6 @@ class EmailExtension extends AbstractExtension
 	private ?string $customInkyPath;
 
     /**
-     * EmailExtension constructor.
      * @param ParameterBagInterface $parameterBag
      */
 	public function __construct(ParameterBagInterface $parameterBag)

@@ -68,11 +68,11 @@ class EmailWebpackEncoreExtension extends EmailExtension implements ServiceSubsc
         if ($file) {
             $files = $this->entrypointLookup->getCssFiles($file);
             foreach ($files as $f) {
-                if (0 === strpos($f, '/')) {
+                if (str_starts_with($f, '/')) {
                     $f = $this->publicDir.$f;
                 }
 
-                if (false === strpos($f, 'http') && !file_exists($f)) {
+                if (!str_contains($f, 'http') && !file_exists($f)) {
                     continue;
                 }
 

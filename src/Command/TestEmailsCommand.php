@@ -3,6 +3,7 @@
 namespace NetBull\FoundationEmailsBundle\Command;
 
 use NetBull\FoundationEmailsBundle\Event\SendMailEvent;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -12,18 +13,25 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
-/**
- * Class TestEmailsCommand
- * @package NetBull\FoundationEmailsBundle\Command
- */
+#[AsCommand(name: 'netbull:emails:test')]
 class TestEmailsCommand extends Command
 {
+    /**
+     * @var ParameterBagInterface
+     */
     private ParameterBagInterface $parameterBag;
+
+    /**
+     * @var EventDispatcherInterface
+     */
     private EventDispatcherInterface $dispatcher;
+
+    /**
+     * @var array
+     */
     private array $templates = [];
 
     /**
-     * TestEmailsCommand constructor.
      * @param ParameterBagInterface $parameterBag
      * @param EventDispatcherInterface $dispatcher
      * @param string|null $name
@@ -36,19 +44,19 @@ class TestEmailsCommand extends Command
     }
 
     /**
-     * @inheritdoc
+     * @return void
      */
-    protected function configure()
+    protected function configure(): void
     {
-        $this->setName('netbull:emails:test')
-            ->addOption('template', 't', InputOption::VALUE_OPTIONAL, 'Specific template to test');
+        $this->addOption('template', 't', InputOption::VALUE_OPTIONAL, 'Specific template to test');
     }
 
     /**
      * @param InputInterface $input
      * @param OutputInterface $output
+     * @return void
      */
-    protected function initialize(InputInterface $input, OutputInterface $output)
+    protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         $projectDir = $this->parameterBag->get('kernel.project_dir');
         $templatesPath = $this->parameterBag->get('netbull_foundation_emails.templates_path');
@@ -66,7 +74,9 @@ class TestEmailsCommand extends Command
     }
 
     /**
-     * @inheritdoc
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {

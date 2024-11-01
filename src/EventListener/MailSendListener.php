@@ -5,10 +5,6 @@ namespace NetBull\FoundationEmailsBundle\EventListener;
 use NetBull\FoundationEmailsBundle\Event\SendMailEvent;
 use NetBull\FoundationEmailsBundle\Utils\SendMail;
 
-/**
- * Class MailSendListener
- * @package NetBull\FoundationEmailsBundle\EventListener
- */
 class MailSendListener
 {
     /**
@@ -17,7 +13,6 @@ class MailSendListener
     protected SendMail $sendMail;
 
     /**
-     * CompanyVerifyListener constructor.
      * @param SendMail $sendMail
      */
     public function __construct(SendMail $sendMail)
@@ -25,11 +20,12 @@ class MailSendListener
         $this->sendMail = $sendMail;
     }
 
-	/**
-	 * @param SendMailEvent $event
-	 */
-	public function __invoke(SendMailEvent $event)
-	{
+    /**
+     * @param SendMailEvent $event
+     * @return void
+     */
+	public function __invoke(SendMailEvent $event): void
+    {
 		if (SendMailEvent::TYPE_SYSTEM === $event->getType()) {
 			$message = $this->sendMail->createSystemMessage($event->getTemplate(), $event->getParams());
 		} else {

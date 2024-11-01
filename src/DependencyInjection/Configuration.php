@@ -5,10 +5,6 @@ namespace NetBull\FoundationEmailsBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-/**
- * Class Configuration
- * @package NetBull\FoundationEmailsBundle\DependencyInjection
- */
 class Configuration implements ConfigurationInterface
 {
     /**

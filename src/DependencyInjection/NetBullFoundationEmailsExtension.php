@@ -2,21 +2,21 @@
 
 namespace NetBull\FoundationEmailsBundle\DependencyInjection;
 
+use Exception;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-/**
- * Class NetBullFoundationEmailsExtension
- * @package NetBull\FoundationEmailsBundle\DependencyInjection
- */
 class NetBullFoundationEmailsExtension extends Extension
 {
     /**
-     * {@inheritdoc}
+     * @param array $configs
+     * @param ContainerBuilder $container
+     * @return void
+     * @throws Exception
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
