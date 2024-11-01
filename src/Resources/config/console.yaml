@@ -4,3 +4,8 @@ services:
     arguments: [ '@parameter_bag', '@event_dispatcher' ]
     tags:
       - { name: console.command, command: 'netbull:emails:test' }
+  netbull_foundation_emails.command.render:
+    class: NetBull\FoundationEmailsBundle\Command\RenderEmailTemplatesCommand
+    arguments: [ '@parameter_bag', '@twig' ]
+    tags:
+      - { name: 'console.command', command: 'netbull:emails:render' }

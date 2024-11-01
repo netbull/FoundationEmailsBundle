@@ -56,4 +56,56 @@ class AppKernel extends Kernel
 ```
 
 ### Step 3: Configuration
-###ToDo..
+After installing the bundle, configure it by adding the following settings to your Symfony configuration file:
+```yaml
+# config/packages/netbull_foundation_emails.yaml
+netbull_foundation_emails:
+  templates_path: '%kernel.project_dir%/templates/Emails'    # Path to the email templates
+  custom_inky_path: null                                     # Optional custom path to the Inky library
+  rendered_templates_path: '%kernel.project_dir%/var/email_previews'  # Output directory for rendered email templates
+```
+Commands
+============
+This bundle provides two Symfony console commands for handling email templates:
+
+### 1. Test Email Templates
+**Command:** netbull:emails:test
+
+**Description:** This command allows you to send test emails using the templates to verify their appearance and delivery.
+
+**Usage:**
+
+```bash
+php bin/console netbull:emails:test
+```
+**Options:**
+
+--template, -t: Specify a particular template for sending. If not provided, all available templates will be sent.
+
+**Example:**
+
+```bash
+php php bin/console netbull:emails:test --template email/example.inky.twig
+```
+
+### 2. Render Email Templates
+**Command:** netbull:emails:render
+
+**Description:** This command renders all email templates located in the specified templates_path and saves the rendered versions to the rendered_templates_path. It is useful for testing email templates or preparing preview files for debugging in the browser.
+
+**Usage:**
+
+```bash
+php bin/console netbull:emails:render
+```
+
+**Options:**
+
+--template, -t: Specify a particular template to render. If not provided, all available templates will be rendered.
+
+**Example:**
+
+```bash
+php php bin/console netbull:emails:render --template email/example.inky.twig
+```
+
