@@ -23,6 +23,7 @@ class NetBullFoundationEmailsExtension extends Extension
 
         $container->setParameter('netbull_foundation_emails.templates_path', $config['templates_path']);
         $container->setParameter('netbull_foundation_emails.custom_inky_path', $config['custom_inky_path']);
+        $container->setParameter('netbull_foundation_emails.rendered_templates_path', $config['rendered_templates_path']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');

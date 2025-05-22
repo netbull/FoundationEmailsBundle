@@ -1,5 +1,8 @@
 const Encore = require('@symfony/webpack-encore');
 
+// Use legacy OpenSSL provider for Node.js 17+ compatibility
+process.env.NODE_OPTIONS = "--openssl-legacy-provider";
+
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
 if (!Encore.isRuntimeEnvironmentConfigured()) {
@@ -50,7 +53,10 @@ Encore
     corejs: 3
   })
 
-  // enables Sass/SCSS support
-  .enableSassLoader();
+  // enables Sass/SCSS support with Dart Sass explicitly defined
+  .enableSassLoader((options) => {
+    options.implementation = require('sass'); // Explicitly use Dart Sass
+    options.sourceMap = !Encore.isProduction(); // Enable source maps only in development
+  });
 
 module.exports = Encore.getWebpackConfig();
