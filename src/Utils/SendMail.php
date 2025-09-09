@@ -110,8 +110,12 @@ class SendMail
 			return $this;
 		}
 		if (is_array($addresses)) {
-			foreach ($addresses as $address) {
-				$this->message->to(new Address($address, $name));
+			foreach ($addresses as $i => $address) {
+                if (0 === $i) {
+                    $this->message->to(new Address($address, $name));
+                } else {
+                    $this->message->addTo(new Address($address, $name));
+                }
 			}
 		} else {
 			$this->message->to(new Address($addresses, $name));
