@@ -28,7 +28,7 @@ class TestEmailsCommand extends Command
      * @param EventDispatcherInterface $dispatcher
      * @param string|null $name
      */
-    public function __construct(ParameterBagInterface $parameterBag, EventDispatcherInterface $dispatcher, string $name = null)
+    public function __construct(ParameterBagInterface $parameterBag, EventDispatcherInterface $dispatcher, ?string $name = null)
     {
         parent::__construct($name);
         $this->parameterBag = $parameterBag;

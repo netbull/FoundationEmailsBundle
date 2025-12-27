@@ -52,7 +52,7 @@ class SendMailEvent extends Event
 	 * @param string|null $type
 	 * @param array $attachments
 	 */
-	public function __construct(string $template, array $params, string $subject, $addresses = null, string $type = null, array $attachments = [])
+	public function __construct(string $template, array $params, string $subject, $addresses = null, ?string $type = null, array $attachments = [])
 	{
 		$this->template = $template;
 		$this->params = $params;

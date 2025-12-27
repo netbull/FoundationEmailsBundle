@@ -51,7 +51,7 @@ class EmailWebpackEncoreExtension extends EmailExtension implements ServiceSubsc
      * @param string|null $file Entry name
      * @return string
      */
-    public function getCssSource(string $file = null): string
+    public function getCssSource(?string $file = null): string
     {
         if ($this->isDev) {
             $context = stream_context_create([

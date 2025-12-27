@@ -55,7 +55,7 @@ class EmailExtension extends AbstractExtension
      * @param string|null $file
      * @return string
      */
-	public function getCssSource(string $file = null): string
+	public function getCssSource(?string $file = null): string
 	{
 		$source = '';
 		if (is_null($file)) {
