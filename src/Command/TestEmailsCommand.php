@@ -63,8 +63,8 @@ class TestEmailsCommand extends Command
         $finder = new Finder();
         $finder->in($templatesPath)
             ->exclude('Snippets')
-            ->name('*.inky.twig')
-            ->notName('*layout.inky.twig')
+            ->name('*.twig')
+            ->notName('*layout*.twig')
             ->files();
 
         $this->templates = [];
